@@ -24,10 +24,13 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Run Sempgrep
         uses: returntocorp/semgrep-action@v1
         with:
-          config: 'p/your-rule-pack'
+          config: 'p/default'
           pattern: 'your-pattern'
           output-file: semgrep.log
 
@@ -41,7 +44,7 @@ jobs:
           echo "End of Semgrep Results" >> results.log
 
       - name: Upload results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: semgrep-results
           path: results.log
