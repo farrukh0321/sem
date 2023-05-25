@@ -26,12 +26,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Run Sempgrep
+        uses: returntocorp/semgrep-action@v1
+        
         with:
           config: 'p/default'
           output-file: semgrep.log
 
       - name: Save semgrep results
         run: |
+          echo "HRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
           cat semgrep.log
           echo "Semgrep Results" > results.log
           echo "---------------------" >> results.log
