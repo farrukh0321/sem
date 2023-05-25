@@ -31,7 +31,6 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: 'p/default'
-          pattern: 'your-pattern'
           output-file: semgrep.log
 
       - name: Save semgrep results
